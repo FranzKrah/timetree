@@ -2,10 +2,11 @@
 ##      This code is part of the timetree package        ##
 ## copyright F.-S. Krah 2015 (last update: 2015-04-15)   ##
 timetree <- function(taxa){
-  url <- paste("http://www.timetree.org/index.php?taxon_a=",
-               taxa[1],"&taxon_b=", taxa[2],
-               "&submit=Search", sep="")
+  url <- paste("http://www.timetree.org/search/pairwise/", 
+    taxa[1], "/", taxa[2], sep ="")
   parse <- readHTMLTable(url)
+  u <- htmlParse(url)
+  u <- unlist(xpathApply(u, '//p', xmlValue))
   if(length(parse)>0){
   names(parse) <- c("div", "ref")
   parse$div[,1] <- as.character(parse$div[,1])
@@ -13,6 +14,9 @@ timetree <- function(taxa){
   parse$div <- rbind(parse$div, names(parse$div))
   names(parse$div) <- c("estimate", "a")
   }
-  if(length(parse)==0){parse <- "No molecular data available for this query"}
+  if(length(parse)==0 ){parse <- gsub("\r\n\t\t\t\t\t|\r\n\t\t\t", "", u[[1]])}
   return(parse)
 }
+
+
+

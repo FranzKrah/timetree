@@ -3,9 +3,9 @@ Type: Package
 Title: Interface to the TimeTree of Life Webpage
 Description: An interface to the TimeTree of Life Webpage (http:\\www.timetree.org). TimeTree is a public database for information on the evolutionary timescale of life. This package includes functions for searching divergence time for  taxa or all nodes of a phylogeny.
 URL: http://www.timetree.org
-Version: 1.0
+Version: 1.0.1
 Imports: XML, phangorn
-Date: 2015-04-11
+Date: 2016-02-08
 Author: Franz-Sebastian Krah
 Maintainer: Franz-Sebastian Krah <f.krah@mailbox.org>
 License: GPL (>= 2)

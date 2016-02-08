@@ -10,7 +10,7 @@ timetree.phylo <- function(phy, node.time=c("expert", "mean", "median")){
     d <- unlist(Descendants(phy, nt+i, type="tips"))
     taxa <- phy$tip.label[d][c(1,length(d))]
     div <- timetree(taxa)
-    if(length(grep("No molecular data available for this query", div))==0)
+    if(length(div)==2)
     {
       if(length(grep("Expert", div$div[,1]))>0)
       {di <- div$div[grep("Expert", div$div[,1]),][2]
@@ -33,7 +33,7 @@ timetree.phylo <- function(phy, node.time=c("expert", "mean", "median")){
       else{ median <- c("NA") }  
       l[[i]] <- c(expert, mean, median)
     }
-    if(length(grep("No molecular data available for this query", div))>0)
+    if(length(div)==1)
     {l[[i]] <- c(nt+i, rep("NA", 3))}
   }
   l <- do.call(rbind,l)
