@@ -10,3 +10,4 @@ Author: Franz-Sebastian Krah
 Maintainer: Franz-Sebastian Krah <f.krah@mailbox.org>
 License: GPL (>= 2)
 Repository: CRAN
+RoxygenNote: 6.1.0
